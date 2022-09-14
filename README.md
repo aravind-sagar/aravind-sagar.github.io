@@ -1,9 +1,3 @@
-# This is my landing page
-## Beep boop beep
-### I know its missing content
-Italicized text is the *cat's meowwww*.
-
-
 <h1 align="center">Hi 👋, I'm Aravind</h1>
 <h3 align="center">A developer from Goa, India working on things I find cool.</h3>
 
