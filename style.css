@@ -1,253 +1,165 @@
-/* Style the header with a grey background and some padding */
-.header {
-  overflow: hidden;
-  background-color: #f1f1f1;
-  padding: 20px 10px;
-}
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 
-/* Style the header links */
-.header a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
-}
-
-/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
-.header a.logo {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-/* Change the background color on mouse-over */
-.header a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Style the active/current link*/
-.header a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-
-/* Float the link section to the right */
-.header-right {
-  float: right;
-}
-
-/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .header-right {
-    float: none;
-  }
-}
-body {
-  background-color: black;
-  color: white;
-  font-family: "Apple Sans", sans-serif;
-  font-size: 20px;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-/* hello section */
-.hello {
-  text-align: center; /* Center the text horizontally */
-  font-family: "Apple Sans", sans-serif; /* Use Apple Sans font if available, otherwise use sans-serif */
-}
-
-.hello h1 {
-  font-size: 40rem; /* Adjust the font size as needed */
-  font-weight: 80;
-  margin: 0; /* Remove default margin for h1 */
-}
-
-.about h1 {
-  font-size: 10rem; /* Adjust the font size as needed */
-  font-weight: 80;
-  margin: 0; /* Remove default margin for h1 */
-}
-
-/* socials animation */
 :root {
-  --blue-rgb: 92 192 249;
-  --green-rgb: 125 161 35;
-  --brown-rgb: 127 46 23;
+  --bg: rgb(39, 37, 47);
+  --text: rgba(255, 255, 255, 0.5);
+  --active: rgba(255, 255, 255, 0.8);
+  --logo: rgba(255, 255, 255, 0.85);
+  --menu: rgba(255, 255, 255, 0.75);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
-.socials {
-  background-color: black;
-}
-
-.socials {
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 1000ms;
-}
-
-.socials:has(.card[data-color="blue"]:hover) {
-  background-color: rgb(var(--blue-rgb) / 25%);
-}
-
-.socials:has(.card[data-color="orange"]:hover) {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), #ff5722;
-}
-
-.socials:has(.card[data-color="purple"]:hover) {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), #cc4cf4;
-}
-
-.socials:has(.card[data-color="darkblue"]:hover) {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), #0077b5;
-}
-
-#cards {
+body {
   width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.card {
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  cursor: pointer;
-  outline: none;
-  transition: scale 100ms;
-}
-
-.card .card-front-image {
-  position: relative;
-  z-index: 2;
-}
-
-.card .card-image {
-  width: clamp(300px, 20vw, 500px);
-  aspect-ratio: 1; /* Make the aspect ratio 1:1 for square images */
-  border-radius: clamp(0.5rem, 0.75vw, 2rem);
-}
-
-.card-faders {
   height: 100%;
+  font-size: 100%;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg);
+  overflow: hidden;
+}
+
+.header {
   width: 100%;
   position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 1500ms;
-  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
 }
 
-.socials .card:hover .card-faders {
+.header__logo {
+  font: 900 1.25rem "arial-black", sans-serif;
+  color: var(--logo);
+}
+
+.header__right {
+  display: flex;
+}
+
+.header__language {
+  font: 100 0.7rem helvetica, sans-serif;
+  color: var(--text);
+  margin: 0 0.15rem;
+}
+
+.header__active {
+  font-weight: 900;
+  color: var(--active);
+}
+
+.header__diamond {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 0.5px solid var(--text);
+  transform: rotate(45deg);
+  margin-left: 0.75rem;
+}
+
+.menu {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: min-content;
+}
+
+.menu a {
+  display: block;
+  font-family: "league gothic", helvetica, serif;
+  font-size: 5vmin;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--menu);
+  padding: 0.5rem 0;
+  transform: scale(0.95);
+  opacity: 0.25;
+  transition: scale 550ms linear, opacity 250ms linear;
+}
+
+.menu a:first-of-type {
+  transform: scale(1);
   opacity: 1;
 }
 
-.socials .card:active {
-  scale: 0.98;
+.menu:hover a:not(:hover) {
+  transform: scale(0.95);
+  opacity: 0.25;
 }
 
-.card-fader {
+.menu a:hover {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.bg__pattern {
   position: absolute;
-  left: 0px;
-  top: 0px;
+  top: 0;
+  width: 100vw;
+  height: 130vh;
+  background: radial-gradient(rgba(255, 255, 255, 0.1) 9%, transparent 9%);
+  background-position: 0% 0%;
+  background-size: 6vmin 6vmin;
+  transform: translateY(0);
+  transition: background-size 800ms ease, opacity 800ms linear,
+    transform 800ms ease;
 }
 
-.card-fader:nth-child(odd) {
-  animation: fade-left 3s linear infinite;
+.menu:hover ~ .bg__pattern {
+  background-size: 5vmin 5vmin;
+  opacity: 0.75;
 }
 
-.card-fader:nth-child(even) {
-  animation: fade-right 3s linear infinite;
+.menu[data-index="0"] ~ .bg__pattern {
+  transform: translateY(-2%);
+}
+.menu[data-index="1"] ~ .bg__pattern {
+  transform: translateY(-10%);
+}
+.menu[data-index="2"] ~ .bg__pattern {
+  transform: translateY(-15%);
+}
+.menu[data-index="3"] ~ .bg__pattern {
+  transform: translateY(-20%);
 }
 
-.card-fader:is(:nth-child(3), :nth-child(4)) {
-  animation-delay: 750ms;
+.bg__image {
+  width: 100vw;
+  height: 115vh;
+  background: url("spacebridge.jpg");
+  /*  possible image #2  */
+  /* background-image: url("https://64.media.tumblr.com/396dad2c2d11385ea46f405bc82d4d05/1042b9995965438a-50/s1280x1920/d6a6bee51b8d74afee00895704a232d4764a9540.jpg"); */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  transition: transform 800ms ease, height 800ms ease;
 }
 
-.card-fader:is(:nth-child(5), :nth-child(6)) {
-  animation-delay: 1500ms;
+.menu:hover ~ .bg__image {
+  height: 110vh;
 }
 
-.card-fader:is(:nth-child(7), :nth-child(8)) {
-  animation-delay: 2250ms;
+.menu[data-index="0"] ~ .bg__image {
+  transform: translateY(-0%);
 }
-
-@media (max-width: 1200px) {
-  .socials {
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-
-  #cards {
-    flex-direction: column;
-    align-items: center;
-    gap: 4rem;
-    padding: 4rem;
-  }
-
-  .socials .card .card-image {
-    width: 400px;
-  }
+.menu[data-index="1"] ~ .bg__image {
+  transform: translateY(-2%);
 }
-
-@media (max-width: 600px) {
-  #cards {
-    gap: 2rem;
-    padding: 2rem;
-  }
-
-  .socials .card {
-    width: 80%;
-  }
-
-  .socials .card .card-image {
-    width: 100%;
-  }
+.menu[data-index="2"] ~ .bg__image {
+  transform: translateY(-4%);
 }
-
-@keyframes fade-left {
-  from {
-    scale: 1;
-    translate: 0%;
-    opacity: 1;
-  }
-
-  to {
-    scale: 0.8;
-    translate: -30%;
-    opacity: 0;
-  }
+.menu[data-index="3"] ~ .bg__image {
+  transform: translateY(-6%);
 }
-
-@keyframes fade-right {
-  from {
-    scale: 1;
-    translate: 0%;
-    opacity: 1;
-  }
-
-  to {
-    scale: 0.8;
-    translate: 30%;
-    opacity: 0;
-  }
-}
-/* socials animation ends */
