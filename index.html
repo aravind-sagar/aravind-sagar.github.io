@@ -1,158 +1,35 @@
 <!DOCTYPE html>
-<html>
-  <title>My portfolio page</title>
+<html lang="en">
   <head>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <title>CodePen - Parallax Navigation Menu</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  <header>
-    <div class="header">
-      <a href="#default" class="logo">Aravind</a>
-      <div class="header-right">
-        <a href="#about">About</a>
-        <a href="#social">Socials</a>
-        <a href="#work-ethic">Work ethic</a>
-        <a class="active" href="#contact">Contact</a>
-      </div>
-    </div>
-  </header>
   <body>
-    <div class="hello">
-      <h1>Hello</h1>
-    </div>
-    <div class="about">
-      <h1>
-        THIS IS ME,<br />WANNABE DEVELOPER, BLOGGER, SOCIAL MEDIA COOL PERSON.
-      </h1>
-    </div>
-    <div class="socials">
-      <div id="cards">
-        <div class="card" data-color="blue">
-          <img
-            class="card-front-image card-image"
-            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-          />
-          <div class="card-faders">
-            <img
-              class="card-fader card-image"
-              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            />
-          </div>
+    <!-- partial:index.partial.html -->
+    <main class="wrapper">
+      <header class="header">
+        <div class="header__logo">ARAVIND SAGAR</div>
+        <div class="header__right">
+          <!-- <p>
+            <span class="header__language header__active">EN</span>
+            <span class="header__language">CN</span>
+          </p> -->
+          <div class="header__diamond"></div>
         </div>
-        <div class="card" data-color="purple">
-          <img
-            class="card-front-image card-image"
-            src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-          />
-          <div class="card-faders">
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-            />
-          </div>
-        </div>
-        <div class="card" data-color="darkblue">
-          <img
-            class="card-front-image card-image"
-            src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-          />
-          <div class="card-faders">
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-            />
-            <img
-              class="card-fader card-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="work-ethic">
-      <h1>
-        Work ethic:<br> I drink 5 cups of coffe a day, have a terrible sleep cycle
-        and love a deadline
-      </h1>
-    </div>
+      </header>
+      <nav class="menu">
+        <ul>
+          <a href="#">About</a>
+          <a href="#">Projects</a>
+          <a href="#">Socials.</a>
+          <a href="#">Contact</a>
+        </ul>
+      </nav>
+      <div class="bg__pattern"></div>
+      <div class="bg__image"></div>
+    </main>
+    <!-- partial -->
+    <script src="./script.js"></script>
   </body>
 </html>
