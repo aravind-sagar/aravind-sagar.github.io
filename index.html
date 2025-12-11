@@ -3,31 +3,125 @@
   <head>
     <meta charset="UTF-8" />
     <title>Aravind Sagar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <!-- partial:index.partial.html -->
     <main class="wrapper">
-      <header class="header">
+<header class="header">
         <div class="header__logo">ARAVIND SAGAR</div>
         <div class="header__right">
-          <!-- <p>
-            <span class="header__language header__active">EN</span>
-            <span class="header__language">CN</span>
-          </p> -->
           <div class="header__diamond"></div>
         </div>
       </header>
       <nav class="menu">
         <ul>
-          <a href="#">About</a>
-          <a href="#">Projects</a>
-          <a href="#">Socials.</a>
-          <a href="#">Contact</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
         </ul>
       </nav>
       <div class="bg__pattern"></div>
       <div class="bg__image"></div>
+
+      <div class="content-container">
+        <section id="about" class="content-section">
+          <h2>About Me</h2>
+          <p>Backend-focused developer specialising in <strong>NestJS</strong> and <strong>TypeScript</strong>, with practical experience building full-stack applications using <strong>Vue/Nuxt</strong>. I care about clean architecture, predictable code, and developer experience.</p>
+          <p>I’ve built internal tools, improved workflows, and contributed to projects that support learning and productivity across teams.</p>
+          
+          <div class="subsection">
+            <h3>Skills</h3>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <span class="skill-label">Languages</span>
+                <span class="skill-value">TypeScript, JavaScript, SQL, C++</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Backend</span>
+                <span class="skill-value">NestJS, Node.js, REST APIs</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Frontend</span>
+                <span class="skill-value">Vue.js, Nuxt 3, HTML, CSS</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Databases</span>
+                <span class="skill-value">MySQL</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Cloud / DevOps</span>
+                <span class="skill-value">AWS (Lambda, Cognito, S3, API Gateway), Git, Docker</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Testing</span>
+                <span class="skill-value">Jest</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h3>Experience</h3>
+            <div class="experience-item">
+              <h4>Creative Capsule — Fullstack Developer</h4>
+              <span class="date">Aug 2024 – Present</span>
+              <ul>
+                <li>Developed modular backend services.</li>
+                <li>Ensured maintainable, high-quality code through consistent reviews and standards.</li>
+              </ul>
+            </div>
+            <div class="experience-item">
+              <h4>BlueSkript — Backend Developer Intern</h4>
+              <span class="date">Aug 2023 – Oct 2023</span>
+              <ul>
+                <li>Worked on backend APIs and database operations for client-facing features.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h3>Education</h3>
+            <div class="education-grid">
+            <div class="edu-item">
+                <strong>B.E. Information Technology</strong>
+                <span>Goa College of Engineering (2020–2024)</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" class="content-section">
+          <h2>Selected Projects</h2>
+          
+          <a href="https://aravind-sagar.github.io/template-viewer/" target="_blank" class="project-item">
+            <h3>SAM Template Viewer</h3>
+            <p class="stack"><strong>Stack:</strong> JavaScript, HTML, CSS</p>
+            <p>Client-side visualizer for AWS SAM & CloudFormation templates. Extends YAML parsing to handle AWS intrinsic functions (like !Ref, !Sub) for accurate rendering.</p>
+          </a>
+
+          <a href="https://github.com/aravind-sagar/workwise" target="_blank" class="project-item">
+            <h3>WorkWise</h3>
+            <p class="stack"><strong>Stack:</strong> Next.js, Firebase, Gemini AI</p>
+            <p>AI-powered work log and performance review helper. Features daily logging, analytics dashboard, and Gemini-based summaries.</p>
+          </a>
+
+          <a href="https://github.com/aravind-sagar/malaria-shield" target="_blank" class="project-item">
+            <h3>Malaria Shield</h3>
+            <p class="stack"><strong>Stack:</strong> Flutter, Firebase, Google Maps</p>
+            <p>Prototype disease-tracking app with geolocation data visualisation.</p>
+          </a>
+        </section>
+
+        <section id="contact" class="content-section">
+          <h2>Links</h2>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/aravindsagar" target="_blank" class="contact-link">LinkedIn: linkedin.com/in/aravind-sagar</a>
+            <a href="https://github.com/aravind-sagar" target="_blank" class="contact-link">GitHub: github.com/aravindsagar</a>
+          </div>
+        </section>
+      </div>
     </main>
     <!-- partial -->
     <script src="./script.js"></script>
