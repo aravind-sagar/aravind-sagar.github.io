@@ -21,12 +21,15 @@ function activateParallax() {
       }
     }, false);
 
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
       isManualScroll = true;
       activeIndex = i;
       updateActiveState();
-      
-      // Reset manual scroll lock after animation finishes
+
+      if (sections[i]) {
+        sections[i].scrollIntoView({ behavior: 'smooth' });
+      }
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         isManualScroll = false;
