@@ -1,0 +1,301 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Space+Grotesk:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Reset & Base Variables for Mobile */
+:root {
+    /* Color Palette - Field System */
+    --m-base: #F2F2F2;
+    --m-surface: #E5E5E5;
+    --m-accent: #FF5F05; /* RAL 2004 Safety Orange */
+    --m-text-primary: #0F0F0F;
+    --m-text-secondary: #606060;
+    --m-border: #E5E5E5; /* Light Grey for grid lines */
+    
+    /* Dark Mode Defaults (can be toggled via media query or class, sticking to light base as requested default, but providing dark variables) */
+    --m-dark-base: #111111;
+    --m-dark-surface: #222222;
+    --m-dark-text: #F2F2F2;
+}
+
+/* Visibility Control */
+.mobile-wrapper {
+    display: none;
+}
+
+@media (max-width: 1024px) { /* Adjust breakpoint as needed, 768px is standard tablet */
+    
+    /* Hide Desktop Wrapper */
+    .wrapper {
+        display: none !important;
+    }
+
+    /* Show Mobile Wrapper */
+    .mobile-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100vh;
+        background-color: var(--m-base);
+        color: var(--m-text-primary);
+        font-family: 'Space Mono', monospace;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    /* Typography */
+    .m-header-text {
+        font-family: 'Space Grotesk', 'Inter', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em; /* Wide tracking */
+        line-height: 1;
+    }
+
+    .m-mono {
+        font-family: 'Space Mono', monospace;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    /* Layout & Grid - The Exposed Structure */
+    .mobile-grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 1px;
+        background-color: var(--m-border); /* Creates the 1px gutters */
+        border: 1px solid var(--m-border);
+        margin: 16px;
+        margin-bottom: 80px; /* Space for bottom nav */
+    }
+
+    .mobile-grid-container > div {
+        background-color: var(--m-base);
+    }
+    
+    /* Header - System Status */
+    .mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px;
+        border-bottom: 1px solid var(--m-border);
+        font-family: 'Space Mono', monospace;
+        font-size: 10px;
+        color: var(--m-text-secondary);
+        position: sticky;
+        top: 0;
+        background: var(--m-base);
+        z-index: 50;
+    }
+
+    .status-indicator {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background-color: var(--m-accent);
+        border-radius: 50%;
+        margin-right: 4px;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.4; }
+        100% { opacity: 1; }
+    }
+
+    /* Project Cards - The Cartridges */
+    .m-project-card {
+        grid-column: span 4;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid var(--m-border);
+        position: relative;
+    }
+
+    .m-project-image-container {
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        position: relative;
+        background-color: #ccc;
+        border-bottom: 1px solid var(--m-border);
+    }
+
+    .m-project-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%) contrast(1.1); /* Dither feel */
+        transition: filter 0.2s ease;
+    }
+    
+    .m-project-image:hover, .m-project-card:active .m-project-image {
+        filter: none;
+    }
+    
+    /* Noise overlay */
+    .m-noise-overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8cGF0aCBkPSJNMCA1TDUgMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4='); /* Simple diagonal lines or noise */
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .m-project-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        font-family: 'Space Mono', monospace;
+        font-size: 10px;
+        color: var(--m-text-secondary);
+    }
+
+    .m-meta-item {
+        padding: 8px;
+        border-right: 1px solid var(--m-border);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .m-meta-item:last-child {
+        border-right: none;
+    }
+
+    .m-meta-label {
+        font-size: 9px;
+        opacity: 0.7;
+    }
+
+    .m-project-title-row {
+        padding: 12px;
+        border-top: 1px solid var(--m-border);
+    }
+
+    .m-project-title {
+        font-size: 18px;
+        color: var(--m-text-primary);
+        margin: 0;
+    }
+
+    /* About Section adapted to Grid */
+    .m-section-header {
+        grid-column: span 4;
+        padding: 24px 16px 8px 16px;
+        border-bottom: 1px solid var(--m-border);
+    }
+    
+    .m-text-block {
+        grid-column: span 4;
+        padding: 16px;
+        font-size: 14px;
+        line-height: 1.4;
+        border-bottom: 1px solid var(--m-border);
+    }
+
+    .m-text-block p {
+        color: var(--m-text-primary);
+    }
+    
+    .m-text-block a {
+        color: var(--m-accent);
+    }
+
+    .m-text-block h3, 
+    .m-text-block h4,
+    .m-text-block .m-header-text,
+    .m-text-block .m-mono {
+        color: var(--m-text-primary);
+    }
+
+    /* Navigation - Bottom Control Deck */
+    .mobile-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 64px; /* fixed height */
+        background: var(--m-base);
+        border-top: 1px solid var(--m-border);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        z-index: 100;
+    }
+
+    .m-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--m-text-secondary);
+        font-family: 'Space Mono', monospace;
+        font-size: 10px;
+        border-right: 1px solid var(--m-border);
+        transition: background-color 0.1s linear, color 0.1s linear;
+    }
+
+    .m-nav-item:last-child {
+        border-right: none;
+    }
+
+    .m-nav-item.active, .m-nav-item:active {
+        background-color: var(--m-accent);
+        color: #FFFFFF;
+    }
+
+    .m-nav-icon {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+
+    /* Button Style */
+    .m-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        background: transparent;
+        border: 1px solid var(--m-text-primary);
+        color: var(--m-text-primary);
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.1s linear;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .m-btn:active, .m-btn:hover {
+        background: var(--m-accent);
+        border-color: var(--m-accent);
+        color: #FFFFFF;
+        transform: scale(0.98);
+    }
+
+    /* Spacing & New Info Elements */
+    .m-spacer {
+        grid-column: span 4;
+        height: 20vh; /* Sufficient spacing between main sections */
+        border-bottom: 1px solid var(--m-border);
+        background:repeating-linear-gradient(
+            45deg,
+            var(--m-border),
+            var(--m-border) 1px,
+            transparent 1px,
+            transparent 10px
+        );
+        opacity: 0.1;
+    }
+
+    .m-skill-box {
+        border: 1px solid var(--m-border);
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Space Mono', monospace;
+        font-size: 10px;
+    }
+}
