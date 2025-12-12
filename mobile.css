@@ -54,7 +54,7 @@
     .m-mono {
         font-family: 'Space Mono', monospace;
         text-transform: uppercase;
-        font-size: 12px;
+        font-size: 13px;
     }
 
     /* Layout & Grid - The Exposed Structure */
@@ -80,7 +80,7 @@
         padding: 16px;
         border-bottom: 1px solid var(--m-border);
         font-family: 'Space Mono', monospace;
-        font-size: 10px;
+        font-size: 11px;
         color: var(--m-text-secondary);
         position: sticky;
         top: 0;
@@ -147,7 +147,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         font-family: 'Space Mono', monospace;
-        font-size: 10px;
+        font-size: 11px;
         color: var(--m-text-secondary);
     }
 
@@ -174,7 +174,7 @@
     }
 
     .m-project-title {
-        font-size: 18px;
+        font-size: 20px;
         color: var(--m-text-primary);
         margin: 0;
     }
@@ -189,8 +189,8 @@
     .m-text-block {
         grid-column: span 4;
         padding: 16px;
-        font-size: 14px;
-        line-height: 1.4;
+        font-size: 15px;
+        line-height: 1.5;
         border-bottom: 1px solid var(--m-border);
     }
 
@@ -231,7 +231,7 @@
         text-decoration: none;
         color: var(--m-text-secondary);
         font-family: 'Space Mono', monospace;
-        font-size: 10px;
+        font-size: 11px;
         border-right: 1px solid var(--m-border);
         transition: background-color 0.1s linear, color 0.1s linear;
     }
@@ -265,7 +265,7 @@
         cursor: pointer;
         transition: all 0.1s linear;
         text-decoration: none;
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .m-btn:active, .m-btn:hover {
@@ -296,6 +296,6 @@
         display: flex;
         flex-direction: column;
         font-family: 'Space Mono', monospace;
-        font-size: 10px;
+        font-size: 11px;
     }
 }
