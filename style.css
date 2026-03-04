@@ -11,6 +11,64 @@
     --font-head:      'Space Grotesk', 'Inter', sans-serif;
 }
 
+/* Dark mode */
+:root[data-theme="dark"] {
+    --base:           #000000;
+    --surface:        #141414;
+    --text-primary:   #EBEBEB;
+    --text-secondary: #888888;
+    --border:         #2A2A2A;
+    /* mobile aliases */
+    --m-base:         #000000;
+    --m-surface:      #141414;
+    --m-text-primary: #EBEBEB;
+    --m-text-secondary: #888888;
+    --m-border:       #2A2A2A;
+}
+
+/* BLACKOUT MODE button */
+.darkmode-btn {
+    display: block;
+    width: calc(100% - 48px);
+    margin: auto 24px 24px;
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: var(--text-secondary);
+    background: var(--base);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    top: 0;
+    box-shadow: 0 3px 0 var(--border);
+    transition: box-shadow 0.08s ease, top 0.08s ease, background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+}
+
+.darkmode-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+.darkmode-btn:active {
+    box-shadow: none;
+    top: 3px;
+}
+
+[data-theme="dark"] .darkmode-btn {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 3px 0 #b84200;
+}
+
+[data-theme="dark"] .darkmode-btn:active {
+    box-shadow: none;
+}
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;

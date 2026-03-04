@@ -318,4 +318,41 @@
         font-family: 'Space Mono', monospace;
         font-size: 11px;
     }
+
+    /* BLACKOUT MODE button */
+    .m-darkmode-btn {
+        display: block;
+        width: 100%;
+        padding: 12px 16px;
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.10em;
+        color: var(--m-text-primary);
+        background: var(--m-base);
+        border: 1px solid var(--m-text-primary);
+        cursor: pointer;
+        text-align: left;
+        position: relative;
+        top: 0;
+        box-shadow: 0 3px 0 var(--m-border);
+        transition: box-shadow 0.08s ease, top 0.08s ease, background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+    }
+
+    .m-darkmode-btn:active {
+        box-shadow: none;
+        top: 3px;
+    }
+
+    [data-theme="dark"] .m-darkmode-btn {
+        background: var(--m-accent);
+        color: #fff;
+        border-color: var(--m-accent);
+        box-shadow: 0 3px 0 #b84200;
+    }
+
+    [data-theme="dark"] .m-darkmode-btn:active {
+        box-shadow: none;
+    }
 }

@@ -360,6 +360,39 @@ function initPageBehaviour() {
   if (sections[0]) sections[0].classList.add('visible');
 
   initMobileInterface();
+  initDarkMode();
+}
+
+function initDarkMode() {
+  const html    = document.documentElement;
+  const buttons = [
+    document.getElementById('darkmode-toggle'),
+    document.getElementById('m-darkmode-toggle'),
+  ].filter(Boolean);
+
+  const DARK_LABEL  = '// BLACKOUT_MODE';
+  const LIGHT_LABEL = '// RESTORE_SIGNAL';
+
+  function applyTheme(dark, persist) {
+    html.dataset.theme = dark ? 'dark' : '';
+    buttons.forEach(btn => { btn.textContent = dark ? LIGHT_LABEL : DARK_LABEL; });
+    if (persist) localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+
+  const stored      = localStorage.getItem('theme');
+  const sysDark     = window.matchMedia('(prefers-color-scheme: dark)');
+  if (stored)           applyTheme(stored === 'dark', false);
+  else                  applyTheme(sysDark.matches, false);
+
+  sysDark.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) applyTheme(e.matches, false);
+  });
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyTheme(html.dataset.theme !== 'dark', true);
+    });
+  });
 }
 
 function initMobileInterface() {
