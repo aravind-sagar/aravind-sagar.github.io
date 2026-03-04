@@ -1,0 +1,14 @@
+{
+  "channels": [
+    {
+      "label": "LINKEDIN_SIGNAL",
+      "url": "https://www.linkedin.com/in/aravindsagar",
+      "mobileBtnLabel": "LINKEDIN_SIGNAL"
+    },
+    {
+      "label": "GITHUB_REPO",
+      "url": "https://github.com/aravind-sagar",
+      "mobileBtnLabel": "GITHUB_REPO"
+    }
+  ]
+}

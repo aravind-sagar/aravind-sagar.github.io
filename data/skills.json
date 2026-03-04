@@ -1,0 +1,10 @@
+{
+  "groups": [
+    { "label": "Languages",     "value": "TypeScript, JavaScript, SQL, C++",                      "mobileLabel": "LANG",     "mobileValue": "TS, JS, SQL, C++" },
+    { "label": "Backend",       "value": "NestJS, Node.js, REST APIs",                            "mobileLabel": "BACKEND",  "mobileValue": "NESTJS, NODE" },
+    { "label": "Frontend",      "value": "Vue.js, Nuxt 3, HTML, CSS",                            "mobileLabel": "FRONTEND", "mobileValue": "VUE, NUXT" },
+    { "label": "Databases",     "value": "MySQL",                                                 "mobileLabel": null,       "mobileValue": null },
+    { "label": "Cloud / DevOps","value": "AWS (Lambda, Cognito, S3, API Gateway), Git, Docker",  "mobileLabel": "CLOUD",    "mobileValue": "AWS, DOCKER" },
+    { "label": "Testing",       "value": "Jest",                                                  "mobileLabel": null,       "mobileValue": null }
+  ]
+}

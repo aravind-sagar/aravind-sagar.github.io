@@ -1,0 +1,23 @@
+{
+  "entries": [
+    {
+      "title": "Creative Capsule — Fullstack Developer",
+      "date": "Aug 2024 – Present",
+      "mobileTitle": "CREATIVE CAPSULE",
+      "mobileMeta": "2024 - PRES // FULLSTACK",
+      "bullets": [
+        "Developed modular backend services.",
+        "Ensured maintainable, high-quality code through consistent reviews and standards."
+      ]
+    },
+    {
+      "title": "BlueSkript — Backend Developer Intern",
+      "date": "Aug 2023 – Oct 2023",
+      "mobileTitle": "BLUESKRIPT",
+      "mobileMeta": "2023 // BACKEND INTERN",
+      "bullets": [
+        "Worked on backend APIs and database operations for client-facing features."
+      ]
+    }
+  ]
+}

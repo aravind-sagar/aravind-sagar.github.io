@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "title": "SAM Template Viewer",
+      "url": "https://aravind-sagar.github.io/template-viewer/",
+      "stack": "JavaScript, HTML, CSS",
+      "description": "Client-side visualizer for AWS SAM &amp; CloudFormation templates. Extends YAML parsing to handle AWS intrinsic functions (like !Ref, !Sub) for accurate rendering.",
+      "linkLabel": "Initiate View",
+      "mobile": {
+        "image": "./img/template-viewer.png",
+        "alt": "SAM Template Viewer",
+        "titleDisplay": "SAM TEMPLATE VIEWER",
+        "meta": [
+          { "label": "YEAR",  "value": "2024"   },
+          { "label": "STACK", "value": "JS/HTML" },
+          { "label": "TYPE",  "value": "TOOL"    }
+        ],
+        "btnLabel": "INITIATE_VIEW"
+      }
+    },
+    {
+      "title": "WorkWise",
+      "url": "https://github.com/aravind-sagar/workwise",
+      "stack": "Next.js, Firebase, Gemini AI",
+      "description": "AI-powered work log and performance review helper. Features daily logging, analytics dashboard, and Gemini-based summaries.",
+      "linkLabel": "Access Repo",
+      "mobile": {
+        "image": "./img/workwise.png",
+        "alt": "WorkWise",
+        "titleDisplay": "WORKWISE",
+        "meta": [
+          { "label": "YEAR",  "value": "2024"    },
+          { "label": "STACK", "value": "NEXT.JS"  },
+          { "label": "AI",    "value": "GEMINI"   }
+        ],
+        "btnLabel": "ACCESS_REPO"
+      }
+    },
+    {
+      "title": "Malaria Shield",
+      "url": "https://github.com/aravind-sagar/malaria-shield",
+      "stack": "Flutter, Firebase, Google Maps",
+      "description": "Prototype disease-tracking app with geolocation data visualisation.",
+      "linkLabel": "Access Repo",
+      "mobile": {
+        "image": "./img/malaria-shield.png",
+        "alt": "Malaria Shield",
+        "titleDisplay": "MALARIA SHIELD",
+        "meta": [
+          { "label": "YEAR",  "value": "2024"   },
+          { "label": "STACK", "value": "FLUTTER" },
+          { "label": "TYPE",  "value": "MOBILE"  }
+        ],
+        "btnLabel": "ACCESS_REPO"
+      }
+    }
+  ]
+}

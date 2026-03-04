@@ -1,35 +1,29 @@
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Space+Grotesk:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Space+Grotesk:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
-/* Reset & Base Variables for Mobile */
+/* Variables */
 :root {
-    /* Color Palette - Field System */
-    --m-base: #F2F2F2;
-    --m-surface: #E5E5E5;
-    --m-accent: #FF5F05; /* RAL 2004 Safety Orange */
-    --m-text-primary: #0F0F0F;
+    --m-base:           #F2F2F2;
+    --m-surface:        #E5E5E5;
+    --m-accent:         #FF5F05;
+    --m-text-primary:   #0F0F0F;
     --m-text-secondary: #606060;
-    --m-border: #E5E5E5; /* Light Grey for grid lines */
-    
-    /* Dark Mode Defaults (can be toggled via media query or class, sticking to light base as requested default, but providing dark variables) */
-    --m-dark-base: #111111;
+    --m-border:         #E5E5E5;
+
+    --m-dark-base:    #111111;
     --m-dark-surface: #222222;
-    --m-dark-text: #F2F2F2;
+    --m-dark-text:    #F2F2F2;
 }
 
-/* Visibility Control */
+/* Hidden by default; activated by the media query below */
 .mobile-wrapper {
     display: none;
 }
 
-@media (max-width: 1024px) { /* Adjust breakpoint as needed, 768px is standard tablet */
-    
-    /* Hide Desktop Wrapper */
+@media (max-width: 1024px) {
     .wrapper {
         display: none !important;
     }
 
-    /* Show Mobile Wrapper */
     .mobile-wrapper {
         display: flex;
         flex-direction: column;
@@ -47,7 +41,7 @@
         font-family: 'Space Grotesk', 'Inter', sans-serif;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.05em; /* Wide tracking */
+        letter-spacing: 0.05em;
         line-height: 1;
     }
 
@@ -57,22 +51,22 @@
         font-size: 13px;
     }
 
-    /* Layout & Grid - The Exposed Structure */
+    /* Grid */
     .mobile-grid-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         column-gap: 1px;
-        background-color: var(--m-border); /* Creates the 1px gutters */
+        background-color: var(--m-border); /* 1px column gutters via background bleed */
         border: 1px solid var(--m-border);
         margin: 16px;
-        margin-bottom: 80px; /* Space for bottom nav */
+        margin-bottom: 80px;
     }
 
     .mobile-grid-container > div {
         background-color: var(--m-base);
     }
-    
-    /* Header - System Status */
+
+    /* Header */
     .mobile-header {
         display: flex;
         justify-content: space-between;
@@ -99,14 +93,19 @@
     }
 
     @keyframes pulse {
-        0% { opacity: 1; }
-        50% { opacity: 0.4; }
+        0%   { opacity: 1; }
+        50%  { opacity: 0.4; }
         100% { opacity: 1; }
     }
 
-    /* Project Cards - The Cartridges */
-    .m-project-card {
+    /* Projects list wrapper spans the full 4-column grid width */
+    #m-projects-list {
         grid-column: span 4;
+        display: block;
+    }
+
+    /* Project cards */
+    .m-project-card {
         display: flex;
         flex-direction: column;
         border-bottom: 1px solid var(--m-border);
@@ -126,19 +125,20 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: grayscale(100%) contrast(1.1); /* Dither feel */
+        filter: grayscale(100%) contrast(1.1);
         transition: filter 0.2s ease;
     }
-    
-    .m-project-image:hover, .m-project-card:active .m-project-image {
+
+    .m-project-image:hover,
+    .m-project-card:active .m-project-image {
         filter: none;
     }
-    
-    /* Noise overlay */
+
+    /* SVG diagonal-line texture overlay on project images */
     .m-noise-overlay {
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8cGF0aCBkPSJNMCA1TDUgMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4='); /* Simple diagonal lines or noise */
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8cGF0aCBkPSJNMCA1TDUgMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4=');
         pointer-events: none;
         opacity: 0.5;
     }
@@ -179,13 +179,13 @@
         margin: 0;
     }
 
-    /* About Section adapted to Grid */
+    /* Section headers and content blocks span full grid width */
     .m-section-header {
         grid-column: span 4;
         padding: 24px 16px 8px 16px;
         border-bottom: 1px solid var(--m-border);
     }
-    
+
     .m-text-block {
         grid-column: span 4;
         padding: 16px;
@@ -197,25 +197,25 @@
     .m-text-block p {
         color: var(--m-text-primary);
     }
-    
+
     .m-text-block a {
         color: var(--m-accent);
     }
 
-    .m-text-block h3, 
+    .m-text-block h3,
     .m-text-block h4,
     .m-text-block .m-header-text,
     .m-text-block .m-mono {
         color: var(--m-text-primary);
     }
 
-    /* Navigation - Bottom Control Deck */
+    /* Bottom navigation bar */
     .mobile-nav {
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 64px; /* fixed height */
+        height: 64px;
         background: var(--m-base);
         border-top: 1px solid var(--m-border);
         display: grid;
@@ -240,7 +240,8 @@
         border-right: none;
     }
 
-    .m-nav-item.active, .m-nav-item:active {
+    .m-nav-item.active,
+    .m-nav-item:active {
         background-color: var(--m-accent);
         color: #FFFFFF;
     }
@@ -250,7 +251,7 @@
         margin-bottom: 4px;
     }
 
-    /* Button Style */
+    /* Buttons */
     .m-btn {
         display: inline-flex;
         align-items: center;
@@ -268,19 +269,20 @@
         font-size: 15px;
     }
 
-    .m-btn:active, .m-btn:hover {
+    .m-btn:active,
+    .m-btn:hover {
         background: var(--m-accent);
         border-color: var(--m-accent);
         color: #FFFFFF;
         transform: scale(0.98);
     }
 
-    /* Spacing & New Info Elements */
+    /* Decorative section divider */
     .m-spacer {
         grid-column: span 4;
-        height: 20vh; /* Sufficient spacing between main sections */
+        height: 20vh;
         border-bottom: 1px solid var(--m-border);
-        background:repeating-linear-gradient(
+        background: repeating-linear-gradient(
             45deg,
             var(--m-border),
             var(--m-border) 1px,
