@@ -460,39 +460,46 @@ function initMobileInterface() {
     });
   });
 
-  /*
-   * Observe .m-section elements relative to the grid scroll container.
-   * threshold:0.5 means a section is "active" when it occupies ≥50% of the
-   * scroll container's viewport — reliable even for the last section (COMM).
-   */
-  const mobileObserver = new IntersectionObserver((entries) => {
+  let currentActiveSection = null;
+
+  function updateActiveSectionFromScroll() {
     if (isMobileManualScroll) return;
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
 
-      const header = entry.target.querySelector('.m-section-header');
-      if (!header) return;
-      const text = header.innerText;
+    const center = mobileGridContainer.scrollTop + mobileGridContainer.clientHeight * 0.5;
 
-      let activeText = '';
-      if      (text.includes('OPERATOR_PROFILE')) activeText = 'HOME';
-      else if (text.includes('PROJECT_LOG'))      activeText = 'PROJ';
-      else if (text.includes('SYSTEM_SPECS'))     activeText = 'INFO';
-      else if (text.includes('COMM_CHANNELS'))    activeText = 'COMM';
-
-      if (activeText) {
-        mobileNavItems.forEach(nav => {
-          nav.classList.toggle('active', nav.textContent.trim().includes(activeText));
-        });
-      }
-
-      // Focus effect: dim all sections, highlight the one in view
-      mobileSections.forEach(s => s.classList.remove('m-section--active'));
-      entry.target.classList.add('m-section--active');
+    let best = null;
+    let bestDist = Infinity;
+    mobileSections.forEach(s => {
+      const mid  = s.offsetTop + s.clientHeight * 0.5;
+      const dist = Math.abs(mid - center);
+      if (dist < bestDist) { bestDist = dist; best = s; }
     });
-  }, { root: mobileGridContainer, threshold: 0.5 });
 
-  mobileSections.forEach(s => mobileObserver.observe(s));
+    if (!best || best === currentActiveSection) return;
+    currentActiveSection = best;
+
+    mobileSections.forEach(s => s.classList.remove('m-section--active'));
+    best.classList.add('m-section--active');
+
+    const hdr = best.querySelector('.m-section-header');
+    if (!hdr) return;
+    const txt = hdr.innerText;
+
+    let key = '';
+    if      (txt.includes('OPERATOR_PROFILE')) key = 'HOME';
+    else if (txt.includes('PROJECT_LOG'))      key = 'PROJ';
+    else if (txt.includes('SYSTEM_SPECS'))     key = 'INFO';
+    else if (txt.includes('COMM_CHANNELS'))    key = 'COMM';
+
+    if (key) {
+      mobileNavItems.forEach(nav => {
+        nav.classList.toggle('active', nav.textContent.trim().includes(key));
+      });
+    }
+  }
+
+  mobileGridContainer.addEventListener('scroll', updateActiveSectionFromScroll, { passive: true });
+  requestAnimationFrame(updateActiveSectionFromScroll);
 }
 
 if (document.readyState === 'loading') {
