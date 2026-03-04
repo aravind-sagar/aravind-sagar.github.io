@@ -328,7 +328,7 @@ function initPageBehaviour() {
   }
 
   function initScrollObserver() {
-    // Updates the active nav link when a section crosses the viewport midpoint
+    // root: null = actual viewport; container has overflow:visible so it can't be a scroll root
     const activeObserver = new IntersectionObserver((entries) => {
       if (isManualScroll) return;
       entries.forEach(entry => {
@@ -340,14 +340,13 @@ function initPageBehaviour() {
           updateActiveState();
         }
       });
-    }, { root: container, rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+    }, { root: null, rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 
-    // Triggers the fade-in animation when a section enters view
     const visibilityObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { root: container, rootMargin: '-10% 0px -10% 0px', threshold: 0.1 });
+    }, { root: null, rootMargin: '0px', threshold: 0.1 });
 
     sections.forEach(section => {
       activeObserver.observe(section);
@@ -363,29 +362,42 @@ function initPageBehaviour() {
   initMobileInterface();
 }
 
-// --- Mobile interface ---
-
 function initMobileInterface() {
-  const timeDisplay    = document.getElementById('m-system-time');
-  const mobileNavItems = document.querySelectorAll('.m-nav-item');
-  const mobileWrapper  = document.querySelector('.mobile-wrapper');
+  const timeDisplay       = document.getElementById('m-system-time');
+  const mobileNavItems    = document.querySelectorAll('.m-nav-item');
+  const mobileWrapper     = document.querySelector('.mobile-wrapper');
+  const mobileGridContainer = document.querySelector('.mobile-grid-container');
+  const mobileSections    = document.querySelectorAll('.m-section');
 
   if (!mobileWrapper) return;
 
   if (timeDisplay) {
+    const desktopTime = document.getElementById('d-system-time');
     const updateTime = () => {
       const now     = new Date();
       const dateStr = now.toISOString().slice(0, 10);
       const timeStr = now.toLocaleTimeString('en-US', {
         hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit'
       });
-      timeDisplay.textContent = `${dateStr} ${timeStr}`;
+      const stamp = `${dateStr} ${timeStr}`;
+      timeDisplay.textContent = stamp;
+      if (desktopTime) desktopTime.textContent = stamp;
     };
     setInterval(updateTime, 1000);
     updateTime();
   }
 
+  // Activate the first section on load
+  if (mobileSections[0]) mobileSections[0].classList.add('m-section--active');
+
   let isMobileManualScroll = false;
+
+  // Helper: resolve the .m-section that contains a given section header keyword
+  function findSection(keyword) {
+    return Array.from(mobileSections).find(
+      s => s.querySelector('.m-section-header')?.innerText.includes(keyword)
+    );
+  }
 
   mobileNavItems.forEach(item => {
     item.addEventListener('click', (e) => {
@@ -396,44 +408,58 @@ function initMobileInterface() {
       item.classList.add('active');
 
       isMobileManualScroll = true;
-      setTimeout(() => { isMobileManualScroll = false; }, 1000);
+      setTimeout(() => { isMobileManualScroll = false; }, 1200);
 
-      const mSections     = document.querySelectorAll('.m-section-header');
-      const homeHeader    = Array.from(mSections).find(s => s.innerText.includes('OPERATOR_PROFILE'));
-      const projectHeader = Array.from(mSections).find(s => s.innerText.includes('PROJECT_LOG'));
-      const infoHeader    = Array.from(mSections).find(s => s.innerText.includes('SYSTEM_SPECS'));
-      const commHeader    = Array.from(mSections).find(s => s.innerText.includes('COMM_CHANNELS'));
       const text = item.textContent.trim();
+      let target = null;
+      if      (text.includes('HOME')) target = findSection('OPERATOR_PROFILE');
+      else if (text.includes('PROJ')) target = findSection('PROJECT_LOG');
+      else if (text.includes('INFO')) target = findSection('SYSTEM_SPECS');
+      else if (text.includes('COMM')) target = findSection('COMM_CHANNELS');
 
-      if      (text.includes('HOME') && homeHeader)     homeHeader.scrollIntoView({ behavior: 'smooth' });
-      else if (text.includes('PROJ') && projectHeader)  projectHeader.scrollIntoView({ behavior: 'smooth' });
-      else if (text.includes('INFO') && infoHeader)     infoHeader.scrollIntoView({ behavior: 'smooth' });
-      else if (text.includes('COMM') && commHeader)     commHeader.scrollIntoView({ behavior: 'smooth' });
+      if (target) {
+        // Apply focus state immediately — don't wait for the observer,
+        // which is suppressed during the scroll animation.
+        mobileSections.forEach(s => s.classList.remove('m-section--active'));
+        target.classList.add('m-section--active');
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 
-  const mobileHeaders  = document.querySelectorAll('.m-section-header');
+  /*
+   * Observe .m-section elements relative to the grid scroll container.
+   * threshold:0.5 means a section is "active" when it occupies ≥50% of the
+   * scroll container's viewport — reliable even for the last section (COMM).
+   */
   const mobileObserver = new IntersectionObserver((entries) => {
     if (isMobileManualScroll) return;
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const text = entry.target.innerText;
-        let activeText = '';
-        if      (text.includes('OPERATOR_PROFILE')) activeText = 'HOME';
-        else if (text.includes('PROJECT_LOG'))      activeText = 'PROJ';
-        else if (text.includes('SYSTEM_SPECS'))     activeText = 'INFO';
-        else if (text.includes('COMM_CHANNELS'))    activeText = 'COMM';
+      if (!entry.isIntersecting) return;
 
-        if (activeText) {
-          mobileNavItems.forEach(nav => {
-            nav.classList.toggle('active', nav.textContent.trim().includes(activeText));
-          });
-        }
+      const header = entry.target.querySelector('.m-section-header');
+      if (!header) return;
+      const text = header.innerText;
+
+      let activeText = '';
+      if      (text.includes('OPERATOR_PROFILE')) activeText = 'HOME';
+      else if (text.includes('PROJECT_LOG'))      activeText = 'PROJ';
+      else if (text.includes('SYSTEM_SPECS'))     activeText = 'INFO';
+      else if (text.includes('COMM_CHANNELS'))    activeText = 'COMM';
+
+      if (activeText) {
+        mobileNavItems.forEach(nav => {
+          nav.classList.toggle('active', nav.textContent.trim().includes(activeText));
+        });
       }
-    });
-  }, { root: null, rootMargin: '-10% 0px -50% 0px', threshold: 0 });
 
-  mobileHeaders.forEach(h => mobileObserver.observe(h));
+      // Focus effect: dim all sections, highlight the one in view
+      mobileSections.forEach(s => s.classList.remove('m-section--active'));
+      entry.target.classList.add('m-section--active');
+    });
+  }, { root: mobileGridContainer, threshold: 0.5 });
+
+  mobileSections.forEach(s => mobileObserver.observe(s));
 }
 
 if (document.readyState === 'loading') {

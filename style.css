@@ -74,6 +74,13 @@ html, body {
     gap: 16px;
 }
 
+.header__time {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 0.06em;
+}
+
 .header__diamond {
     width: 6px;
     height: 6px;
@@ -250,7 +257,7 @@ p strong {
 /* About */
 .about-intro {
     max-width: 640px;
-    background: var(--surface);
+    background: var(--base);
     border: 1px solid var(--border);
     padding: 24px;
     margin-bottom: 40px;
@@ -272,7 +279,7 @@ p strong {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1px;
-    background-color: var(--border); /* 1px gutters via background bleed */
+    background-color: var(--base);
     border: 1px solid var(--border);
 }
 
@@ -363,7 +370,7 @@ p strong {
     display: flex;
     flex-direction: column;
     gap: 1px;
-    background-color: var(--border);
+    background-color: var(--base);
     border: 1px solid var(--border);
 }
 
@@ -476,7 +483,7 @@ p strong {
     display: flex;
     flex-direction: column;
     gap: 1px;
-    background-color: var(--border);
+    background-color: var(--base);
     border: 1px solid var(--border);
 }
 

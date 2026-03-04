@@ -12,6 +12,8 @@
     --m-dark-base:    #111111;
     --m-dark-surface: #222222;
     --m-dark-text:    #F2F2F2;
+
+    --m-nav-h: 64px;
 }
 
 /* Hidden by default; activated by the media query below */
@@ -28,12 +30,12 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        min-height: 100vh;
+        height: 100svh; /* constrain to viewport so grid can be the scroll context */
         background-color: var(--m-base);
         color: var(--m-text-primary);
         font-family: 'Space Mono', monospace;
         position: relative;
-        overflow-x: hidden;
+        overflow: hidden;
     }
 
     /* Typography */
@@ -51,21 +53,6 @@
         font-size: 13px;
     }
 
-    /* Grid */
-    .mobile-grid-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        column-gap: 1px;
-        background-color: var(--m-border); /* 1px column gutters via background bleed */
-        border: 1px solid var(--m-border);
-        margin: 16px;
-        margin-bottom: 80px;
-    }
-
-    .mobile-grid-container > div {
-        background-color: var(--m-base);
-    }
-
     /* Header */
     .mobile-header {
         display: flex;
@@ -76,10 +63,9 @@
         font-family: 'Space Mono', monospace;
         font-size: 11px;
         color: var(--m-text-secondary);
-        position: sticky;
-        top: 0;
         background: var(--m-base);
         z-index: 50;
+        flex-shrink: 0; /* don't let the header compress */
     }
 
     .status-indicator {
@@ -98,13 +84,60 @@
         100% { opacity: 1; }
     }
 
-    /* Projects list wrapper spans the full 4-column grid width */
+    /*
+     * Scroll container. flex: 1 fills the space between header and fixed nav.
+     * scroll-snap-type makes each .m-section a locked snap point.
+     */
+    .mobile-grid-container {
+        flex: 1;
+        min-height: 0; /* required for flex children to scroll */
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: max-content;
+        column-gap: 1px;
+        background-color: var(--m-base);
+        border-left: 1px solid var(--m-border);
+        border-right: 1px solid var(--m-border);
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: var(--m-nav-h); /* clear the fixed nav */
+    }
+
+    /*
+     * Each section is a full-height snap unit.
+     * It acts as a sub-grid so inner elements still get the 4-column layout.
+     * Inactive sections are dimmed; .m-section--active restores full opacity.
+     */
+    .m-section {
+        grid-column: span 4;
+        min-height: calc(100svh - 49px - var(--m-nav-h));
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-content: start;
+        background-color: var(--m-base);
+        opacity: 0.35;
+        transition: opacity 0.35s ease;
+        border-bottom: 2px solid var(--m-border);
+    }
+
+    .m-section.m-section--active {
+        opacity: 1;
+    }
+
+    /* Restore base background on section children (mirrors the root grid rule) */
+    .m-section > div {
+        background-color: var(--m-base);
+    }
+
+    /* Project cards */
     #m-projects-list {
         grid-column: span 4;
         display: block;
     }
 
-    /* Project cards */
     .m-project-card {
         display: flex;
         flex-direction: column;
@@ -215,7 +248,7 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 64px;
+        height: var(--m-nav-h);
         background: var(--m-base);
         border-top: 1px solid var(--m-border);
         display: grid;
@@ -275,21 +308,6 @@
         border-color: var(--m-accent);
         color: #FFFFFF;
         transform: scale(0.98);
-    }
-
-    /* Decorative section divider */
-    .m-spacer {
-        grid-column: span 4;
-        height: 20vh;
-        border-bottom: 1px solid var(--m-border);
-        background: repeating-linear-gradient(
-            45deg,
-            var(--m-border),
-            var(--m-border) 1px,
-            transparent 1px,
-            transparent 10px
-        );
-        opacity: 0.1;
     }
 
     .m-skill-box {

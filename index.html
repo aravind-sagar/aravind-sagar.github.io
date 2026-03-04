@@ -15,6 +15,7 @@
       <header class="header">
         <div class="header__logo">ARAVIND.SYS</div>
         <div class="header__right">
+          <div id="d-system-time" class="header__time">00:00:00</div>
           <div class="header__diamond"></div>
         </div>
       </header>
@@ -64,38 +65,43 @@
     <!-- Mobile layout (≤1024px) -->
     <div class="mobile-wrapper">
       <header class="mobile-header">
-        <div class="m-header-text">ARAVIND.SYS</div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="status-indicator"></span>
+          <div class="m-header-text">ARAVIND.SYS</div>
+        </div>
         <div id="m-system-time" class="m-mono">00:00:00</div>
       </header>
 
       <div class="mobile-grid-container">
-        <div class="m-section-header">
-          <h1 class="m-header-text">OPERATOR_PROFILE</h1>
+        <div class="m-section">
+          <div class="m-section-header">
+            <h1 class="m-header-text">OPERATOR_PROFILE</h1>
+          </div>
+          <div id="m-about-block" class="m-text-block"></div>
         </div>
-        <div id="m-about-block" class="m-text-block"></div>
 
-        <div class="m-spacer"></div>
-
-        <div class="m-section-header">
-          <h1 class="m-header-text">PROJECT_LOG</h1>
+        <div class="m-section">
+          <div class="m-section-header">
+            <h1 class="m-header-text">PROJECT_LOG</h1>
+          </div>
+          <div id="m-projects-list"></div>
         </div>
-        <div id="m-projects-list"></div>
 
-        <div class="m-spacer"></div>
-
-        <div class="m-section-header">
-          <h1 class="m-header-text">SYSTEM_SPECS</h1>
+        <div class="m-section">
+          <div class="m-section-header">
+            <h1 class="m-header-text">SYSTEM_SPECS</h1>
+          </div>
+          <div id="m-skills-block" class="m-text-block"></div>
+          <div id="m-experience-block" class="m-text-block"></div>
+          <div id="m-education-block" class="m-text-block"></div>
         </div>
-        <div id="m-skills-block" class="m-text-block"></div>
-        <div id="m-experience-block" class="m-text-block"></div>
-        <div id="m-education-block" class="m-text-block"></div>
 
-        <div class="m-spacer"></div>
-
-        <div class="m-section-header">
-          <h1 class="m-header-text">COMM_CHANNELS</h1>
+        <div class="m-section">
+          <div class="m-section-header">
+            <h1 class="m-header-text">COMM_CHANNELS</h1>
+          </div>
+          <div id="m-contact-block" class="m-text-block" style="display:flex; flex-direction:column; gap:12px;"></div>
         </div>
-        <div id="m-contact-block" class="m-text-block" style="display:flex; flex-direction:column; gap:12px;"></div>
       </div>
 
       <nav class="mobile-nav">

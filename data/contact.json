@@ -9,6 +9,11 @@
       "label": "GITHUB_REPO",
       "url": "https://github.com/aravind-sagar",
       "mobileBtnLabel": "GITHUB_REPO"
+    },
+    {
+      "label": "TWITTER_SIGNAL",
+      "url": "https://twitter.com/aravindzemon",
+      "mobileBtnLabel": "TWITTER_SIGNAL"
     }
   ]
 }
