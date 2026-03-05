@@ -1,5 +1,23 @@
 {
   "projects": [
+      {
+      "title": "Quizzer",
+      "url": "https://acequizzer.vercel.app/",
+      "stack": "Next.js 16, TypeScript, Tailwind CSS, Prisma, Neon PostgreSQL, NextAuth.js, PapaParse",
+      "description": "Modern interactive quiz platform built with Next.js featuring CSV-based quiz generation, Google Authentication, persistent cloud storage with Neon PostgreSQL, smart duplicate prevention, and a responsive dashboard for managing and replaying saved quizzes.",
+      "linkLabel": "Initiate View",
+      "mobile": {
+        "image": "./img/quizzer.png",
+        "alt": "Quizzer App",
+        "titleDisplay": "QUIZZER_APP",
+        "meta": [
+          { "label": "YEAR",  "value": "2025" },
+          { "label": "STACK", "value": "Next.js/TS" },
+          { "label": "TYPE",  "value": "WEB APP" }
+        ],
+        "btnLabel": "INITIATE_VIEW"
+      }
+    },
     {
       "title": "SAM Template Viewer",
       "url": "https://aravind-sagar.github.io/template-viewer/",
