@@ -1,6 +1,24 @@
 {
   "projects": [
       {
+      "title": "KineticLabz",
+      "url": "https://kineticlabz.vercel.app/",
+      "stack": "React, Vite, TypeScript, Tailwind CSS, remark-gfm, mermaid, jspdf, html2canvas, pdfjs-dist, docx, mammoth, lucide-react, motion",
+      "description": "High-performance, strictly client-side developer toolset featuring a Markdown Editor with Mermaid support, JSON Formatter, and high-fidelity PDF/Word converters.",
+      "linkLabel": "Initiate View",
+      "mobile": {
+        "image": "./img/KineticLabz.png",
+        "alt": "KineticLabz",
+        "titleDisplay": "KINETICLABZ",
+        "meta": [
+          { "label": "YEAR",  "value": "2026"   },
+          { "label": "STACK", "value": "React/TS" },
+          { "label": "TYPE",  "value": "DEV TOOL" }
+        ],
+        "btnLabel": "INITIATE_VIEW"
+      }
+    },
+    {
       "title": "Quizzer",
       "url": "https://acequizzer.vercel.app/",
       "stack": "Next.js 16, TypeScript, Tailwind CSS, Prisma, Neon PostgreSQL, NextAuth.js, PapaParse",
